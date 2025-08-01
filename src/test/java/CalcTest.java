@@ -172,4 +172,46 @@ public class CalcTest {
     void t28() {
         assertThat(Calc.run("3 * 1 + (1 - (4 * 1 - (1 - 1)))")).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("-(4 + (2 - 5) * 3) == 5")
+    void t29() {
+        assertThat(Calc.run("-(4 + (2 - 5) * 3)")).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("3 + 2 * (4 - 1) / (1 + 2) == 5")
+    void t30() {
+        assertThat(Calc.run("3 + 2 * (4 - 1) / (1 + 2)")).isEqualTo(5);
+    }
+
+    @Test
+    @DisplayName("-2 * (3 + 4) / -7 == 2")
+    void t31() {
+        assertThat(Calc.run("-2 * (3 + 4) / -7")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("3 + 4 * (2 - (1 + 1) * (3 - 1)) / 2 == -1")
+    void t32() {
+        assertThat(Calc.run("3 + 4 * (2 - (1 + 1) * (3 - 1)) / 2")).isEqualTo(-1);
+    }
+
+    @Test
+    @DisplayName("((3+5)*2 - 10/(2+3)) + (4 - 6) == 12")
+    void t33() {
+        assertThat(Calc.run("((3+5)*2 - 10/(2+3)) + (4 - 6)")).isEqualTo(12);
+    }
+
+    @Test
+    @DisplayName("-((2 + 3) * (4 - (5 + 6 / 2))) == 20")
+    void t34() {
+        assertThat(Calc.run("-((2 + 3) * (4 - (5 + 6 / 2)))")).isEqualTo(20);
+    }
+
+    @Test
+    @DisplayName("(((((2)))) + (((((3 * 4)))) - ((5 + 6)))) == 3")
+    void t35() {
+        assertThat(Calc.run("(((((2)))) + (((((3 * 4)))) - ((5 + 6))))")).isEqualTo(3);
+    }
 }
