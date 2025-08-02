@@ -2,6 +2,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalcTest {
 
@@ -213,5 +214,37 @@ public class CalcTest {
     @DisplayName("(((((2)))) + (((((3 * 4)))) - ((5 + 6)))) == 3")
     void t35() {
         assertThat(Calc.run("(((((2)))) + (((((3 * 4)))) - ((5 + 6))))")).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("-3 + 5 == 2")
+    void t36() {
+        assertThat(Calc.run("-3 + 5")).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("-3 * 2 == -6")
+    void t37() {
+        assertThat(Calc.run("-3 * 2")).isEqualTo(-6);
+    }
+
+    @Test
+    @DisplayName("3 * -2 == -6")
+    void t38() {
+        assertThat(Calc.run("3 * -2")).isEqualTo(-6);
+    }
+
+    @Test
+    @DisplayName("-(3 + 2) == -5")
+    void t39() {
+        assertThat(Calc.run("-(3 + 2)")).isEqualTo(-5);
+    }
+
+    @Test
+    @DisplayName("(3+2)*(4-2)/(1-1) == 0으로 나눌 수 없다.")
+    void t40() {
+        assertThatThrownBy(() -> Calc.run("(3+2)*(4-2)/(1-1)"))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("0으로 나눌 수 없습니다.");
     }
 }
